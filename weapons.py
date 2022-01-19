@@ -59,7 +59,7 @@ item = createWeapon('Tubular Axe', 'Uncommon', ROLL, 'Movement Speed +7%')
 print(item.baseAttr)
 print(initialRoll())
 
-
+# Test again
 # test = [keys for keys, values in WEAPONS.items() if ROLL > values]
 # print(test)
  
