@@ -62,4 +62,13 @@ print(initialRoll())
 # Test again
 # test = [keys for keys, values in WEAPONS.items() if ROLL > values]
 # print(test)
- 
+
+RARITIES = {'Common':45, 'Uncommon':20, 'Rare':15, 'Epic':8, 'Legendary':2}
+weightedRoll = random.choices(*zip(*RARITIES.items()), k=10)
+print(f'Using zip: {weightedRoll}')
+
+
+RARITIES2 = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']
+weightedRoll2 = random.choices(RARITIES2, weights=[45, 20, 15, 8, 2], k=10)
+print(f'Using weights: {weightedRoll2}')
+
