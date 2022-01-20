@@ -78,17 +78,19 @@ SPECIALS = {
     'goldFind':35,
     'magicFind':35,  
     'lightningResist': 25,
+    'chanceBlind': 20,
+    'chanceSlow': 20,
     'fireResist': 25,
     'iceResist': 25,
     'socketed': 20,
     'criticalHitDmg': 20,
     'expGain': 15,
+    'healthRegen':15, 
     'attackSpeed': 10,
     'criticalChance': 10,
     'meleeResist': 10,
     'magicResist': 10,
     'movementSpeed':8, 
-    'healthRegen':8, 
     'manaLeech':8 
     }
 
