@@ -67,6 +67,10 @@ ROLL = roll()
 # weightedRoll = random.choices(*zip(*RARITIES.items()), k=10)
 # print(f'Using zip: {weightedRoll}')
 
+
+def weightedRoll(weights, lists):
+    pass
+
 SPECIALS_COUNT = {1:40, 2:20, 3:15, 4:8, 5:5}
 specialsCountRoll = random.choices(*zip(*SPECIALS_COUNT.items()))
 print(f'Roll for # of specials: {specialsCountRoll}')
@@ -83,7 +87,7 @@ SPECIALS = {
     'fireResist': 25,
     'iceResist': 25,
     'socketed': 20,
-    'criticalHitDmg': 20,
+    'criticalDmg': 20,
     'expGain': 15,
     'healthRegen':15, 
     'attackSpeed': 10,
