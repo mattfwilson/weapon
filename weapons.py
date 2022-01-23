@@ -69,15 +69,6 @@ ROLL = roll()
 # weightedRoll = random.choices(*zip(*RARITIES.items()), k=10)
 # print(f'Using zip: {weightedRoll}')
 
-
-def weightedRoll(weights, lists):
-    pass
-
-SPECIALS_COUNT = {1:40, 2:20, 3:15, 4:8, 5:5}
-specialsCountRoll = random.choices(*zip(*SPECIALS_COUNT.items()))
-print(f'Roll for # of specials: {specialsCountRoll}')
-
-
 SPECIALS = {
     'durability': 50,
     'damageUndead': 50,
@@ -104,8 +95,31 @@ SPECIALS = {
     'holy': 1
     }
 
-specialsRoll = random.choices(*zip(*SPECIALS.items()), k=specialsCountRoll.pop())
-print(f'Roll for types of specials: {specialsRoll}')
+COMMON_WEIGHTS = {1:60, 2:40, 3:5}    
+UNCOMMON_WEIGHTS = {1:40, 2:20, 3:15}
+RARE_WEIGHTS = {1:15, 2:25, 3:25, 4:8}
+EPIC_WEIGHTS = {2:20, 3:50, 4:10, 5:3}
+LEGENDARY_WEIGHTS = {3:10, 4:40, 5:25}
+
+def weightedRoll(weights, attributes):
+    newRoll = random.choices(*zip(*weights.items()))
+    print(newRoll)
+    attrRoll = random.choices(*zip(*attributes.items()), k=newRoll.pop())
+    print(attrRoll)
+    return attrRoll
+
+testy = weightedRoll(LEGENDARY_WEIGHTS, SPECIALS)
+print(f'Function test {testy}')
+
+
+# SPECIALS_COUNT = {1:40, 2:20, 3:15, 4:8, 5:3}
+# specialsCountRoll = random.choices(*zip(*SPECIALS_COUNT.items()))
+# print(f'Roll for # of specials: {specialsCountRoll}')
+
+
+
+# specialsRoll = random.choices(*zip(*SPECIALS.items()), k=specialsCountRoll.pop())
+# print(f'Roll for types of specials: {specialsRoll}')
 
 
 # RARITIES2 = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']
