@@ -1,3 +1,5 @@
+# durability can be called twice in weight options
+
 import random
 
 # Global Vars
@@ -79,13 +81,14 @@ print(f'Roll for # of specials: {specialsCountRoll}')
 SPECIALS = {
     'durability': 50,
     'damageUndead': 50,
+    'increasedDmg': 40,
     'goldFind':35,
     'magicFind':35,  
     'lightningResist': 25,
-    'chanceBlind': 20,
-    'chanceSlow': 20,
     'fireResist': 25,
     'iceResist': 25,
+    'chanceBlind': 20,
+    'chanceSlow': 20,
     'socketed': 20,
     'criticalDmg': 20,
     'expGain': 15,
@@ -95,7 +98,10 @@ SPECIALS = {
     'meleeResist': 10,
     'magicResist': 10,
     'movementSpeed':8, 
-    'manaLeech':8 
+    'manaLeech':8, 
+    'healthLeech': 8,
+    'legendaryFind': 5,
+    'holy': 1
     }
 
 specialsRoll = random.choices(*zip(*SPECIALS.items()), k=specialsCountRoll.pop())
