@@ -97,20 +97,28 @@ SPECIALS = {
     }
 
 COMMON_WEIGHTS = {1:60, 2:40, 3:5}    
-UNCOMMON_WEIGHTS = {1:40, 2:20, 3:15}
+UNCOMMON_WEIGHTS = {1:30, 2:20, 3:10}
 RARE_WEIGHTS = {1:15, 2:25, 3:25, 4:8}
-EPIC_WEIGHTS = {2:20, 3:50, 4:10, 5:3}
-LEGENDARY_WEIGHTS = {3:10, 4:40, 5:25}
+EPIC_WEIGHTS = {2:10, 3:35, 4:10, 5:3}
+LEGENDARY_WEIGHTS = {3:10, 4:40, 5:25, 6:8}
 
 def weightedRoll(weights, attributes):
     newRoll = random.choices(*zip(*weights.items()))
-    print(newRoll)
+    # print(newRoll)
     attrRoll = random.choices(*zip(*attributes.items()), k=newRoll.pop())
-    print(attrRoll)
+    # print(attrRoll)
     return attrRoll
 
-testy = weightedRoll(LEGENDARY_WEIGHTS, SPECIALS)
-print(f'Function test {testy}')
+commonRoll = weightedRoll(COMMON_WEIGHTS, SPECIALS)
+uncommonRoll = weightedRoll(UNCOMMON_WEIGHTS, SPECIALS)
+rareRoll = weightedRoll(RARE_WEIGHTS, SPECIALS)
+epicRoll = weightedRoll(EPIC_WEIGHTS, SPECIALS)
+legendaryRoll = weightedRoll(LEGENDARY_WEIGHTS, SPECIALS)
+print(f'Common roll: {commonRoll}')
+print(f'Uncommon roll: {uncommonRoll}')
+print(f'Rare roll: {rareRoll}')
+print(f'Epic roll: {epicRoll}')
+print(f'Legendary roll: {legendaryRoll}')
 
 
 # SPECIALS_COUNT = {1:40, 2:20, 3:15, 4:8, 5:3}
