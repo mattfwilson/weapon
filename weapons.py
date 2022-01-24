@@ -92,7 +92,8 @@ SPECIALS = {
     'manaLeech':8, 
     'healthLeech': 8,
     'legendaryFind': 5,
-    'holy': 1
+    'holy': 1,
+    'cursed': 5
     }
 
 COMMON_WEIGHTS = {1:60, 2:40, 3:5}    
