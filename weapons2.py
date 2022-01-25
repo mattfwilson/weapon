@@ -85,4 +85,6 @@ elif rollRarity[0] == 'Godly':
     godlyRoll = attribute_roll(GODLY_WEIGHTS, SPECIALS)
     print(f'Legendary attribute roll: {godlyRoll}')
 
+# Test
+
 
