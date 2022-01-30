@@ -132,7 +132,7 @@ print(f'Legendary roll: {legendaryRoll}')
 # print(f'Roll for types of specials: {specialsRoll}')
 
 
-# RARITIES2 = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']
-# weightedRoll2 = random.choices(RARITIES2, weights=[45, 20, 15, 8, 2], k=10)
-# print(f'Using weights: {weightedRoll2}')
+RARITIES2 = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']
+weightedRoll2 = random.choices(RARITIES2, weights=[45, 20, 15, 8, 2], k=10)
+print(f'Using weights: {weightedRoll2}')
 
