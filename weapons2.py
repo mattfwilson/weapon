@@ -1,4 +1,5 @@
 # fix durability being able to be called twice in weighted options
+# test
 
 import random
 
@@ -15,7 +16,6 @@ UNCOMMON = ['Sabre', 'Longbow', 'Mace', 'Cudgel', 'Spear', 'Hammer']
 RARE = ['Scimitar', 'Lance', 'Knuckles', 'Flail']
 EPIC = ['Crossbow', 'Quarterstaff']
 LEGENDARY = ['Machine Gun', 'Whip']
-
 ATTRIBUTES = ['STR', 'DEX', 'INT', 'VIT', 'CHR']
 
 # attributes
