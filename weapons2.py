@@ -47,33 +47,38 @@ SPECIALS = {
     }
 
 COMMON_WEIGHTS = {1:60, 2:40, 3:5}    
-UNCOMMON_WEIGHTS = {1:30, 2:20, 3:10}
-RARE_WEIGHTS = {1:15, 2:25, 3:25, 4:8}
-EPIC_WEIGHTS = {2:10, 3:35, 4:10, 5:3}
-LEGENDARY_WEIGHTS = {3:10, 4:40, 5:25, 6:8}
+UNCOMMON_WEIGHTS = {1:30, 2:40, 3:5}
+RARE_WEIGHTS = {2:40, 3:25, 4:8}
+EPIC_WEIGHTS = {2:10, 3:45, 4:20, 5:3}
+LEGENDARY_WEIGHTS = {3:5, 4:40, 5:25, 6:8}
 
 def rarity_roll():
     RARITIES = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']
-    weightedRoll = random.choices(RARITIES, weights=[45, 20, 15, 8, 2], k=1)
-    print(f'Using inline weights: {weightedRoll}')
+    weightedRoll = random.choices(RARITIES, weights=[42, 28, 18, 10, 2], k=1)
     return weightedRoll
 
 def attribute_roll(weights, attributes):
     newRoll = random.choices(*zip(*weights.items()))
-    # print(newRoll)
     attrRoll = random.choices(*zip(*attributes.items()), k=newRoll.pop())
-    # print(attrRoll)
     return attrRoll
 
-commonRoll = attribute_roll(COMMON_WEIGHTS, SPECIALS)
-uncommonRoll = attribute_roll(UNCOMMON_WEIGHTS, SPECIALS)
-rareRoll = attribute_roll(RARE_WEIGHTS, SPECIALS)
-epicRoll = attribute_roll(EPIC_WEIGHTS, SPECIALS)
-legendaryRoll = attribute_roll(LEGENDARY_WEIGHTS, SPECIALS)
+rollRarity = rarity_roll()
+print(rollRarity)
 
-print(f'Common roll: {commonRoll}')
-print(f'Uncommon roll: {uncommonRoll}')
-print(f'Rare roll: {rareRoll}')
-print(f'Epic roll: {epicRoll}')
-print(f'Legendary roll: {legendaryRoll}')
+if rollRarity[0] == 'Common':
+    commonRoll = attribute_roll(COMMON_WEIGHTS, SPECIALS)
+    print(f'Common attribute roll: {commonRoll}')
+elif rollRarity[0] == 'Uncommon':
+    uncommonRoll = attribute_roll(UNCOMMON_WEIGHTS, SPECIALS)
+    print(f'Uncommon attribute roll: {uncommonRoll}')
+elif rollRarity[0] == 'Rare':
+    rareRoll = attribute_roll(RARE_WEIGHTS, SPECIALS)
+    print(f'Rare attribute roll: {rareRoll}')
+elif rollRarity[0] == 'Epic':
+    epicRoll = attribute_roll(EPIC_WEIGHTS, SPECIALS)
+    print(f'Epic attribute roll: {epicRoll}')
+elif rollRarity[0] == 'Legendary':
+    legendaryRoll = attribute_roll(LEGENDARY_WEIGHTS, SPECIALS)
+    print(f'Legendary attribute roll: {legendaryRoll}')
+
 
