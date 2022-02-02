@@ -58,8 +58,10 @@ def rarity_roll():
     return weightedRoll
 
 def attribute_roll(weights, attributes):
+    output_lst = []
     newRoll = random.choices(*zip(*weights.items()))
     attrRoll = random.choices(*zip(*attributes.items()), k=newRoll.pop())
+    while output_lst < 
     return attrRoll
 
 rollRarity = rarity_roll()
