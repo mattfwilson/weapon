@@ -75,12 +75,12 @@ COMMON_WEIGHTS = {1:60, 2:40, 3:5}
 UNCOMMON_WEIGHTS = {1:30, 2:40, 3:5}
 RARE_WEIGHTS = {2:40, 3:25, 4:8}
 EPIC_WEIGHTS = {2:10, 3:45, 4:20, 5:3}
-LEGENDARY_WEIGHTS = {3:5, 4:40, 5:25, 6:8}
-GODLY_WEIGHTS = {5:10, 6:5}
+LEGENDARY_WEIGHTS = {4:40, 5:25, 6:8}
+GODLY_WEIGHTS = {5:10, 6:5, 7:3}
 
 def rarity_roll():
     RARITIES = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary', 'Godly']
-    weightedRoll = random.choices(RARITIES, weights=[28, 28, 18, 10, 10, 10])
+    weightedRoll = random.choices(RARITIES, weights=[10, 8, 7, 5, 4, 3])
     return weightedRoll
 
 def attribute_roll(weights, attributes):
@@ -108,7 +108,7 @@ elif rollRarity[0] == 'Legendary':
     print(f'Legendary attribute roll: {legendaryRoll}')
 elif rollRarity[0] == 'Godly':
     godlyRoll = attribute_roll(GODLY_WEIGHTS, LEGENDARY_ATT)
-    print(f'Legendary attribute roll: {godlyRoll}')
+    print(f'Godly attribute roll: {godlyRoll}')
 
 
 
