@@ -4,9 +4,18 @@ GEN_ATTR = {'Strength', False, 'Intelligence', True, 'Dexerity', False, 'Willpow
 GEN_ATTR_RNG = {'is_class': [6.0, 16.0], 'not_class': [4.0, 12.0]}
 
 CHAR_CLASS = input('What is your class? ')
-roll = ''
+ROLL = ''
 
-if roll == 'y':
-    pass
-else:
-    roll = input('Roll weapon? (y/n) ')
+def main():
+    while True:
+        if ROLL == 'y':
+            rarity = random.choice(RARITY)
+            attribute = random.choice(GEN_ATTR)
+            print(f'Rarity: {rarity}, Attribute: {attribute}')
+        elif ROLL == 'n':
+            quit()
+        else:
+            roll = input('Roll weapon? (y/n) ')
+
+if __name__ == "__main__":
+    main()
