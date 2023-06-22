@@ -4,14 +4,6 @@ RARITY = {'Legendary': 2.0, 'Rare': 17.5, 'Uncommon': 30.5, 'Common': 50.0}
 GEN_ATTR = {'Strength', False, 'Intelligence', True, 'Dexerity', False, 'Willpower', False, 'Vitality', False}
 GEN_ATTR_RNG = {'is_class': [6.0, 16.0], 'not_class': [4.0, 12.0]}
 
-def check_class(CHAR_CLASS, CLASSES):
-    CHAR_CLASS = input('What is your class? ')
-
-    if CHAR_CLASS in CLASSES:
-        return CHAR_CLASS
-    else:
-        print('Invalid class')
-
 def roll_weapon(RARITY, GEN_ATTR):
     roll = ''
     if roll == 'y':
@@ -22,6 +14,8 @@ def roll_weapon(RARITY, GEN_ATTR):
         quit()
     else:
         roll = input('Roll weapon? (y/n) ')
+
+print(__name__, type(__name__))
 
 if __name__ == "__main__":
     while True:
