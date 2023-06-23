@@ -1,4 +1,5 @@
 CHAR_CLASS = ''
+CHAR_LEVEL = 1
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
 RARITY = {'Legendary': 2.0, 'Rare': 17.5, 'Uncommon': 30.5, 'Common': 50.0}
 GEN_ATTR = {'Strength', False, 'Intelligence', True, 'Dexerity', False, 'Willpower', False, 'Vitality', False}
@@ -22,5 +23,6 @@ if __name__ == "__main__":
         CHAR_CLASS = input('What is your class? ')
         if CHAR_CLASS in CLASSES:
             rolled = roll_weapon(RARITY, GEN_ATTR)
+            print(f'{rolled}: (rolled func executed)')
         else:
-            pass
+            break
