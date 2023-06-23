@@ -22,7 +22,7 @@ class CommonWeapon:
 w1 = CommonWeapon()
 print(w1)
 
-def roll_weapon(RARITY, GEN_ATTR):
+def roll_weapon(RARITY):
     roll = ''
     if roll == 'y':
         rarity = random.choice(RARITY)
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     while True:
         CHAR_CLASS = input('What is your class? ')
         if CHAR_CLASS in CLASSES:
-            rolled = roll_weapon(RARITY, GEN_ATTR)
+            rolled = roll_weapon(RARITY)
             print(f'{rolled}: (rolled func executed)')
         else:
             print(f'Breaking loop')
