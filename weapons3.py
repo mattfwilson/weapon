@@ -1,6 +1,6 @@
 import itertools
 
-CHAR_CLASS = ''
+CHAR_CLASS = str()
 CHAR_LEVEL = 1
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
 RARITY = {'Legendary': 2.0, 'Rare': 17.5, 'Uncommon': 30.5, 'Common': 50.0}
@@ -23,7 +23,7 @@ w1 = CommonWeapon()
 print(w1)
 
 def roll_weapon(RARITY):
-    roll = ''
+    roll = str()
     if roll == 'y':
         rarity = random.choice(RARITY)
         attribute = random.choice(GEN_ATTR)
