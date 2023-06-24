@@ -1,4 +1,5 @@
 import itertools
+import random
 
 CHAR_CLASS = str()
 CHAR_LEVEL = 1
@@ -18,9 +19,6 @@ class CommonWeapon:
 
     def __repr__(self):
         return f'Weapon {self.id} created!'
-
-w1 = CommonWeapon()
-print(w1)
 
 def roll_weapon(RARITY):
     roll = str()
