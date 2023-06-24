@@ -1,6 +1,6 @@
 import itertools
 import random
-# test for git
+
 CHAR_CLASS = str()
 CHAR_LEVEL = 1
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
@@ -16,17 +16,6 @@ class CommonWeapon:
 
     def __repr__(self):
         return f'Weapon {self.id} created!'
-
-def roll_weapon(RARITY):
-    roll = str()
-    if roll == 'y':
-        rarity = random.choice(RARITY)
-        attribute = random.choice(GEN_ATTR)
-        print(f'Rarity: {rarity}, Attribute: {attribute}')
-    elif roll == 'n':
-        quit()
-    else:
-        roll = input('Roll weapon? (y/n) ')
 
 print(__name__, type(__name__))
 
