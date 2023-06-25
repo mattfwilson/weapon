@@ -9,10 +9,7 @@ GEN_ATTR = {'Strength', False, 'Intelligence', True, 'Dexerity', False, 'Willpow
 
 class CommonWeapon:
     id = itertools.count(0)
-    gen_attr_range = {
-        'is_class': [6.0, 16.0],
-        'not_class': [4.0, 12.0]
-        }
+    gen_attr_range = {'is_class': [6.0, 16.0], 'not_class': [4.0, 12.0]}
 
     def __init__(self):
         self.id = next(CommonWeapon.id)
