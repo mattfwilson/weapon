@@ -1,6 +1,6 @@
 import itertools
 import random
-
+# test for git
 CHAR_CLASS = str()
 CHAR_LEVEL = 1
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
