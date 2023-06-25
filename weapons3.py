@@ -33,3 +33,4 @@ if __name__ == "__main__":
         else:
             print(f'{CHAR_CLASS} not valid. Breaking loop')
             break
+# test
