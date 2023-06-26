@@ -11,24 +11,26 @@ SORCERER_ATTR = {'Strength', RARITY.get('Legendary'), 'Intelligence', RARITY.get
 class Weapon:
     id_iter = itertools.count(1)
     def __init__(self):
-        self.id = next(Common.id_iter)
+        self.id = next(Weapon.id_iter)
 
 class Common(Weapon):
     def __init__(self):
         super().__init__()
+        self.item_level = self.id + 1
         INVENTORY.append(self)
 
     def __repr__(self):
         return f'Weapon {self.id}'
 
-    def get_level(self, level):
-        return f'Item level: {self.item_level}'
+    def get_item_level(self):
+        return self.item_level
 
 if __name__ == "__main__":
     CHAR_CLASS = 'Sorcerer'
     if CHAR_CLASS in CLASSES:
-        print(f'{CHAR_CLASS} is a valid class! Rolling weapons...')
-        w1 = Common()
-        print(INVENTORY)
+        print(f'You are a {CHAR_CLASS}! Rolling weapon...')
+        common1 = Common()
+        print(f'Inventory: {INVENTORY}')
+        print(f'{common1}, Item Level: {common1.get_item_level()}')
     else:
         print(f'{CHAR_CLASS} is not a valid class. Exiting...')
