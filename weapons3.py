@@ -6,34 +6,40 @@ CHAR_CLASS = str()
 CHAR_LEVEL = 1
 INVENTORY = []
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
-RARITY = {'Legendary': 3, 'Rare': 17, 'Uncommon': 30, 'Common': 50}
+RARITY = {'Legendary': 3, 'Rare': 17, 'Uncommon': 30, 'Weapon': 50}
 
-class Weapon:
+class Item:
     id_iter = itertools.count(1)
     def __init__(self):
-        self.id = next(Weapon.id_iter)
+        self.id = next(Item.id_iter)
 
-class Common(Weapon):
-    def __init__(self, weapon, common_adj):
+class Weapon(Item):
+    def __init__(self, weapon, adj):
         super().__init__()
-        self._item_level = self.id + 1
-        self._weapon = ', '.join(random.choices(weapon))
-        self._adj = ', '.join(random.choices(common_adj))
-        self._drop = self._adj + ' ' + self._weapon
+        self._weap_lvl = self.id + 1
+        self._weap_type = ', '.join(random.choices(weapon))
+        self._weap_adj = ', '.join(random.choices(adj))
+        self._drop = self._weap_adj + ' ' + self._weap_type
         INVENTORY.append(self._drop)
 
     def __repr__(self):
-        return f'{str(self._adj)} {str(self._weapon)}'
+        return self._adj, self._weap_type
+
+    def get_id(self):
+        return self.id
 
     def get_item_level(self):
-        return self._item_level
+        return self._weap_lvl
     
 if __name__ == "__main__":
-    CHAR_CLASS = 'Sorcerer'
-    if CHAR_CLASS in CLASSES:
-        print(f'You are a {CHAR_CLASS}! Rolling weapon...')
-        common1 = Common(sor_weap_type, sor_common_adj)
-        print(f'INVENTORY: {INVENTORY}')
-        print(f'{common1}, Lvl: {common1.get_item_level()}')
-    else:
-        print(f'{CHAR_CLASS} is not a valid class. Exiting...')
+    while True:
+        roll_item = input('Roll item? ')
+        if roll_item in 'y':
+            print(f'Rolling weapon...')
+            item = Weapon(sor_weap_type, sor_common_adj)
+            print(f'Inventory: {INVENTORY}')
+        else:
+            for item in INVENTORY:
+                print(item)
+            print(f'Exiting...')
+            break
