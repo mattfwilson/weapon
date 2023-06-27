@@ -1,18 +1,12 @@
 import itertools
 import random
+from class_info import *
 
 CHAR_CLASS = str()
 CHAR_LEVEL = 1
 INVENTORY = []
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
 RARITY = {'Legendary': 3, 'Rare': 17, 'Uncommon': 30, 'Common': 50}
-
-sor_weap_type = ['Wand', 'Staff', 'Dagger']
-sor_common_adj = ['Basic', 'Apprentice', 'Feeble', 'Sturdy', 'Oak']
-sor_uncommon_adj = ['Enchanted', 'Enlightened', 'Fanatic\'s']
-sor_rare_adj = ['Cleric\'s', 'Undying', 'Apostle\'s']
-sor_legendary_adj = ['Sacred', 'Awkward', 'Elementalist\'s']
-sor_attr = {'Strength', RARITY.get('Legendary'), 'Intelligence', RARITY.get('Common'), 'Dexerity', RARITY.get('Rare'), 'Willpower', RARITY.get('Common'), 'Vitality', RARITY.get('Uncommon')}
 
 class Weapon:
     id_iter = itertools.count(1)
