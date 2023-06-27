@@ -1,18 +1,18 @@
 import itertools
 import random
 
-CHAR_CLASS = str()
-CHAR_LEVEL = 1
-INVENTORY = []
-CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
-RARITY = {'Legendary': 3, 'Rare': 17, 'Uncommon': 30, 'Common': 50}
-SOR_ATTR = {'Strength', RARITY.get('Legendary'), 'Intelligence', RARITY.get('Common'), 'Dexerity', RARITY.get('Rare'), 'Willpower', RARITY.get('Common'), 'Vitality', RARITY.get('Uncommon')}
+char_class = str()
+char_level = 1
+inventory = []
+classes = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
+rarity = {'Legendary': 3, 'Rare': 17, 'Uncommon': 30, 'Common': 50}
+sor_attr = {'Strength', rarity.get('Legendary'), 'Intelligence', rarity.get('Common'), 'Dexerity', rarity.get('Rare'), 'Willpower', rarity.get('Common'), 'Vitality', rarity.get('Uncommon')}
 
-SOR_WEAP = ['Wand', 'Staff']
-SOR_COMMON_ADJ = ['Basic', 'Apprentice', 'Feeble']
-SOR_UNCOMMON_ADJ = ['Enchanted', 'Enlightened', 'Fanatic\'s']
-SOR_RARE_ADJ = ['Cleric\'s', 'Undying', 'Apostle\'s']
-SOR_LEGENDARY_ADJ = ['Sacred', 'Awkward', 'Elementalist\'s']
+sor_weap = ['Wand', 'Staff']
+sor_common_adj = ['Basic', 'Apprentice', 'Feeble']
+sor_uncommon_adj = ['Enchanted', 'Enlightened', 'Fanatic\'s']
+sor_rare_adj = ['Cleric\'s', 'Undying', 'Apostle\'s']
+sor_legendary_adj = ['Sacred', 'Awkward', 'Elementalist\'s']
 
 class Weapon:
     id_iter = itertools.count(1)
@@ -26,7 +26,7 @@ class Common(Weapon):
         self.weapon = random.choices(weapon, cum_weights=(0.50, 0.50))
         self.adj = random.choices(common_adj, cum_weights=(0.50, 0.35, 0.15))
         print(f'{str(self.adj)} {str(self.weapon)}')
-        INVENTORY.append(self)
+        inventory.append(self)
 
     def __repr__(self):
         return f'Weapon {self.id}'
@@ -35,11 +35,11 @@ class Common(Weapon):
         return self.item_level
 
 if __name__ == "__main__":
-    CHAR_CLASS = 'Sorcerer'
-    if CHAR_CLASS in CLASSES:
-        print(f'You are a {CHAR_CLASS}! Rolling weapon...')
-        common1 = Common(SOR_WEAP, SOR_COMMON_ADJ)
-        print(f'Inventory: {INVENTORY}')
+    char_class = 'Sorcerer'
+    if char_class in classes:
+        print(f'You are a {char_class}! Rolling weapon...')
+        common1 = Common(sor_weap, sor_common_adj)
+        print(f'Inventory: {inventory}')
         print(f'{common1}, Item Level: {common1.get_item_level()}')
     else:
-        print(f'{CHAR_CLASS} is not a valid class. Exiting...')
+        print(f'{char_class} is not a valid class. Exiting...')
