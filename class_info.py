@@ -1,5 +1,5 @@
-sor_weap_type = ['Wand', 'Staff', 'Dagger']
-sor_common_adj = ['Basic', 'Apprentice', 'Feeble', 'Sturdy', 'Oak']
+sor_weap_type = ['Wand', 'Staff', 'Dagger', 'Focus']
+sor_common_adj = ['Basic', 'Apprentice', 'Feeble', 'Sturdy', 'Oak', 'Hewn']
 sor_uncommon_adj = ['Enchanted', 'Enlightened', 'Fanatic\'s']
 sor_rare_adj = ['Cleric\'s', 'Undying', 'Apostle\'s']
 sor_legendary_adj = ['Sacred', 'Awkward', 'Elementalist\'s']
