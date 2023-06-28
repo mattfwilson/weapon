@@ -6,7 +6,7 @@ CHAR_CLASS = str()
 CHAR_LEVEL = 1
 INVENTORY = []
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
-RARITY = {'Legendary': 3, 'Rare': 17, 'Uncommon': 30, 'Weapon': 50}
+RARITY = ['Common', 'Uncommon', 'Rare', 'Legendary']
 
 class Item:
     id_iter = itertools.count(1)
@@ -33,10 +33,12 @@ class Weapon(Item):
     
 if __name__ == "__main__":
     while True:
-        roll_item = input('Roll item? ')
-        if roll_item in 'y':
-            print(f'Rolling weapon...')
+        roll_input = input('Roll item? ')
+        if roll_input in 'y':
+            rarity_roll = random.choices(RARITY, weights=[10, 5, 3, 1])
             item = Weapon(sor_weap_type, sor_common_adj)
+            print(', '.join(rarity_roll))
+        elif roll_input == 'inv':
             print(f'Inventory: {INVENTORY}')
         else:
             for item in INVENTORY:
