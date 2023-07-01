@@ -8,18 +8,23 @@ INVENTORY = []
 CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
 RARITY = ['Common', 'Uncommon', 'Rare', 'Legendary', 'Unique']
 
+rarity_roll = random.choices(RARITY, weights=[10, 7, 4, 2, 1])[0]
+print(rarity_roll)
+
 class Item:
     id_iter = itertools.count(1)
     def __init__(self):
         self.id = next(Item.id_iter)
 
 class Weapon(Item):
-    def __init__(self, weapon, adj, level):
+    def __init__(self, rarity, adj, weapon, level):
         super().__init__()
         self._level = level
-        self._weap_lvl = random.choice(self._level, self._level + 1)
-        self._weap_type = ', '.join(random.choices(weapon))
+        self._weap_lvl = self._level + 1
+        print(random.choices(adj.get(rarity)))
+        self._weap_adj = ', '.join(random.choices(adj.get(rarity)[0]))
         self._weap_adj = ', '.join(random.choices(adj))
+        self._weap_type = ', '.join(random.choices(weapon))
         self._drop = self._weap_adj + ' ' + self._weap_type
         INVENTORY.append(self._drop)
 
@@ -37,7 +42,7 @@ if __name__ == "__main__":
         roll_input = input('Roll item? ')
         if roll_input in 'y':
             rarity_roll = random.choices(RARITY, weights=[10, 7, 4, 2, 1])
-            item = Weapon(sor_weap_type, sor_common_adj, CHAR_LEVEL)
+            item = Weapon(rarity_roll, sor_adj, sor_weap, CHAR_LEVEL)
             print(', '.join(rarity_roll))
         elif roll_input == 'inv':
             print(f'Inventory: {INVENTORY}')
@@ -46,5 +51,4 @@ if __name__ == "__main__":
                 print(item)
             print(f'Exiting...')
             break
-
 
