@@ -5,7 +5,6 @@ from class_info import *
 CHAR_CLASS = str()
 CHAR_LEVEL = 1
 INVENTORY = []
-CLASSES = ['Barbarian', 'Sorcerer', 'Rogue', 'Necromancer', 'Druid']
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
 
 class Item:
@@ -24,7 +23,7 @@ class Weapon(Item):
         self._weap_adj = ''.join(random.choices(adj.get(self._rarity)))
         self._weap_type = ''.join(random.choices(weapon))
         self._drop = self._weap_adj + ' ' + self._weap_type
-        self._show_rarity = '[' + self._drop + '] ' + self._drop
+        self._buff_slots = 0
         INVENTORY.append(self._drop)
 
     def __repr__(self):
@@ -34,14 +33,24 @@ class Weapon(Item):
         return self.id
 
     def check_rarity(self):
-        if self._rarity == 'Legendary' or self._rarity == 'Unique':
+        if self._rarity == 'Unique':
             self._rarity = self._rarity.upper()
+            self._buff_slots = random.randint(4, 6)
+        elif self._rarity == 'Legendary':
+            self._rarity = self._rarity.upper()
+            self._buff_slots = random.randint(3, 5)
+        elif self._rarity == 'Rare':
+            self._buff_slots = 3
+        elif self._rarity == 'Magic':
+            self._buff_slots = 2
+        else:
+            self._buff_slots = 1
 
     def show_drop(self):
         print(f'[{self._rarity}] {self._drop}')
 
     def show_details(self):
-        print(f'Equipment: {self.type_equipment}\nConsumable: {self.type_consumable}\nQuest item: {self.type_quest}')
+        print(f'Equipment: {self.type_equipment}\nConsumable: {self.type_consumable}\nQuest item: {self.type_quest}\nBuff slots: {self._buff_slots}')
 
 if __name__ == "__main__":
     while True:
