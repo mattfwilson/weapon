@@ -25,7 +25,6 @@ class Weapon(Item):
         self._drop = self._weap_adj + ' ' + self._weap_type
         self._buff_slots = 0
         self._buffs = []
-        INVENTORY.append(self._drop)
 
     def roll_slots(self):
         if self._rarity == 'Unique':
@@ -44,14 +43,17 @@ class Weapon(Item):
             self._buff_slots = 1
         return self._buff_slots
 
-    def roll_attrs(self, public):
-        self._buffs.append(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1]))
+    def roll_attrs(self, sor_attrs, public_attrs):
+        self._buffs.append(''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1])))
         self._buff_slots -= 1
-        print(public.get(self._rarity))
         if self._buff_slots > 0:
             for slot in range(self._buff_slots):
-                self._buffs.append(random.choices(public.get(self._rarity)))
+                self._buffs.append(''.join(random.choice(public_attrs.get(self._rarity))))
+                self._buff_slots -= 1
         return self._buffs
+
+    def add_to_inv(self):
+        INVENTORY.append(self._drop)
 
     def __repr__(self):
         return self._adj, self._weap_type
@@ -61,6 +63,8 @@ class Weapon(Item):
 
     def show_drop(self):
         print(f'[{self._rarity}] {self._drop}')
+        for att in self._buffs:
+            print(att)
 
     def show_details(self):
         print(f'Equipment: {self.type_equipment}\nConsumable: {self.type_consumable}\nQuest item: {self.account_bound}\nBuff slots: {self._buff_slots}')
@@ -69,10 +73,11 @@ if __name__ == "__main__":
     while True:
         roll_input = input('What do you want to do? ')
         if roll_input == 'roll':
-            item1 = Weapon(sor_adj, sor_weap)
-            item1.roll_slots()
-            item1.roll_attrs(public_attrs)
-            item1.show_full_drop()
+            item = Weapon(sor_adj, sor_weap)
+            item.roll_slots()
+            item.roll_attrs(sor_attrs, public_attrs)
+            item.show_drop()
+            item.add_to_inv()
         elif roll_input == 'inv':
             print(f'Inventory: {INVENTORY}')
         else:
