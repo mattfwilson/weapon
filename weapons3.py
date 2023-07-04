@@ -28,12 +28,10 @@ class Weapon(Item):
 
     def roll_slots(self):
         if self._rarity == 'Unique':
-            self._rarity = self._rarity.upper()
-            self._buff_slots = random.randint(4, 6)
+            self._buff_slots = random.randint(5, 6)
             self.account_bound = True
         elif self._rarity == 'Legendary':
-            self._rarity = self._rarity.upper()
-            self._buff_slots = random.randint(3, 5)
+            self._buff_slots = random.randint(4, 5)
             self.account_bound = True
         elif self._rarity == 'Rare':
             self._buff_slots = 3
@@ -44,17 +42,18 @@ class Weapon(Item):
         return self._buff_slots
 
     def roll_attrs(self, sor_attrs, public_attrs):
+        print(self._rarity)
+        print(f'Buff slots before loop: {self._buff_slots}')
         self._buffs.append(''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1])))
-        print(self._buffs)
+        print(f'Buffs before loop: {self._buffs}')
         self._buff_slots -= 1
         if self._buff_slots > 0:
             for slot in range(self._buff_slots):
-                self._buffs.append(random.sample(public_attrs.get(self._rarity)))
+                self._buffs.append(''.join(random.sample(public_attrs.get(self._rarity), 1)))
                 self._buff_slots -= 1
-        print(self._buffs)
-        print(self._buff_slots)
+        print(f'Buffs after loop: {self._buffs}')
+        print(f'Buff slots after loop: {self._buff_slots}')
         return self._buffs
-
     def add_to_inv(self):
         INVENTORY.append(self._drop)
 
