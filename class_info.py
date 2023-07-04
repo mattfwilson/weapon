@@ -1,3 +1,4 @@
+# test for re-cloning of repo
 sor_adj = {
         'Common': ['Basic', 'Apprentice', 'Feeble', 'Sturdy', 'Oak', 'Hewn'],
         'Magic': ['Enchanted', 'Enlightened', 'Fanatic\'s'],
