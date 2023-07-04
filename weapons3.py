@@ -45,11 +45,14 @@ class Weapon(Item):
 
     def roll_attrs(self, sor_attrs, public_attrs):
         self._buffs.append(''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1])))
+        print(self._buffs)
         self._buff_slots -= 1
         if self._buff_slots > 0:
             for slot in range(self._buff_slots):
-                self._buffs.append(''.join(random.choice(public_attrs.get(self._rarity))))
+                self._buffs.append(random.sample(public_attrs.get(self._rarity)))
                 self._buff_slots -= 1
+        print(self._buffs)
+        print(self._buff_slots)
         return self._buffs
 
     def add_to_inv(self):
@@ -76,7 +79,6 @@ if __name__ == "__main__":
             item = Weapon(sor_adj, sor_weap)
             item.roll_slots()
             item.roll_attrs(sor_attrs, public_attrs)
-            item.show_drop()
             item.add_to_inv()
         elif roll_input == 'inv':
             print(f'Inventory: {INVENTORY}')
