@@ -18,14 +18,14 @@ class Item:
     id_iter = itertools.count(1)
     def __init__(self):
         self.id = next(Item.id_iter)
-        self.type_equipment = False
-        self.type_consumable = False
-        self.account_bound = False
+        self.type_equip = False
+        self.type_consume = False
+        self.type_bound = False
 
 class Weapon(Item):
     def __init__(self, adj: dict, weapon: list):
         super().__init__()
-        self.type_equipment = True
+        self.type_equip = True
         self._rarity = ''.join(random.choices(RARITY, weights=[10, 7, 4, 8, 8]))
         self._level = 5
         self._weap_adj = ''.join(random.choices(adj.get(self._rarity)))
@@ -39,10 +39,10 @@ class Weapon(Item):
         match self._rarity:
             case 'Unique':
                 self._buff_slots = random.randint(5, 7)
-                self.account_bound = True
+                self.type_bound = True
             case 'Legendary':
                 self._buff_slots = random.randint(4, 5)
-                self.account_bound = True
+                self.type_bound = True
             case 'Rare':
                 self._buff_slots = 3
             case 'Magic':
@@ -58,11 +58,11 @@ class Weapon(Item):
         base_buff = ''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1]))
         self._buffs.append(base_buff)
         for slots in range(self._buff_slots):
-            buff = ''.join(random.choice(public_attrs.get(self._rarity)))
-            if buff in self._buffs:
-                buff = ''.join(random.choice(public_attrs.get(self._rarity)))
+            pub_buff = ''.join(random.choice(public_attrs.get(self._rarity)))
+            if pub_buff in self._buffs:
+                pub_buff = ''.join(random.choice(public_attrs.get(self._rarity)))
             else:
-                self._buffs.append(buff)
+                self._buffs.append(pub_buff)
         return self._buffs
 
     def add_to_inv(self):
@@ -76,7 +76,7 @@ class Weapon(Item):
         print('\n')
 
     def show_details(self):
-        print(f'Equipment: {self.type_equipment}\nConsumable: {self.type_consumable}\nAccount Bound: {self.account_bound}\nPublic buff slots: {self._buff_slots}')
+        print(f'Equipment: {self.type_equip}\nConsumable: {self.type_consume}\nAccount Bound: {self.type_bound}\nPublic buff slots: {self._buff_slots}')
 
     def __repr__(self):
         return f'[ID: {self.id} - {self._rarity} {self._weap_adj} {self._weap_type}]'
