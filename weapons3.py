@@ -42,18 +42,23 @@ class Weapon(Item):
         return self._buff_slots
 
     def roll_attrs(self, sor_attrs, public_attrs):
-        print(self._rarity)
-        print(f'Buff slots before loop: {self._buff_slots}')
-        self._buffs.append(''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1])))
-        print(f'Buffs before loop: {self._buffs}')
+        print(f'[{self._rarity}] - {self._weap_adj} {self._weap_type}')
+        # print(f'Buff slots before loop: {self._buff_slots}')
+        buff = ''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1]))
+        self._buffs.append(buff)
+        print(buff)
+        # print(f'Buffs before loop: {self._buffs}')
         self._buff_slots -= 1
         if self._buff_slots > 0:
             for slot in range(self._buff_slots):
-                self._buffs.append(''.join(random.sample(public_attrs.get(self._rarity), 1)))
+                buff = ''.join(random.sample(public_attrs.get(self._rarity), 1))
+                self._buffs.append(buff)
+                print(buff)
                 self._buff_slots -= 1
-        print(f'Buffs after loop: {self._buffs}')
-        print(f'Buff slots after loop: {self._buff_slots}')
+        # print(f'Buffs after loop: {self._buffs}')
+        # print(f'Buff slots after loop: {self._buff_slots}')
         return self._buffs
+
     def add_to_inv(self):
         INVENTORY.append(self._drop)
 
