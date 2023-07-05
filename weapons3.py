@@ -52,6 +52,7 @@ class Weapon(Item):
         if self._buff_slots > 0:
             for slot in range(self._buff_slots):
                 buff = ''.join(random.sample(public_attrs.get(self._rarity), 1))
+                print(type(buff))
                 self._buffs.append(buff)
                 print(buff)
                 self._buff_slots -= 1
