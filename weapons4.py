@@ -2,6 +2,7 @@
 
 # Conditional for check on whether attr is int or float (percent)
 # Unit test for ensuring each item rolled has proper attrs and structure for appending to INV_DETAILS
+# Bug: buff slots not rolling for maximum amount of buff slots created
 
 import itertools
 import random
@@ -48,21 +49,20 @@ class Weapon(Item):
                 self._buff_slots = 2
             case _:
                 self._buff_slots = 1
+        print(self._buff_slots)
         return self._buff_slots
 
     def roll_attrs(self, sor_attrs, public_attrs):
         assert self._buff_slots > 0, 'No buffs slots alotted'
-        buff = ''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1]))
-        self._buffs.append(buff)
-        self._buff_slots -= 1
-        if self._buff_slots > 0:
-            for slots in range(self._buff_slots):
+        print(self._buff_slots)
+        base_buff = ''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1]))
+        self._buffs.append(base_buff)
+        for slots in range(self._buff_slots):
+            buff = ''.join(random.choice(public_attrs.get(self._rarity)))
+            if buff in self._buffs:
                 buff = ''.join(random.choice(public_attrs.get(self._rarity)))
-                if buff in self._buffs:
-                    buff = ''.join(random.choice(public_attrs.get(self._rarity)))
-                else:
-                    self._buffs.append(buff)
-                self._buff_slots -= 1
+            else:
+                self._buffs.append(buff)
         return self._buffs
 
     def add_to_inv(self):
@@ -76,7 +76,7 @@ class Weapon(Item):
         print('\n')
 
     def show_details(self):
-        print(f'Equipment: {self.type_equipment}\nConsumable: {self.type_consumable}\nQuest item: {self.account_bound}\nBuff slots: {self._buff_slots}')
+        print(f'Equipment: {self.type_equipment}\nConsumable: {self.type_consumable}\nAccount Bound: {self.account_bound}\nPublic buff slots: {self._buff_slots}')
 
     def __repr__(self):
         return f'[ID: {self.id} - {self._rarity} {self._weap_adj} {self._weap_type}]'
@@ -91,6 +91,7 @@ if __name__ == "__main__":
             item.add_to_inv()
             item.show_drop()
             print(f'{item}')
+            item.show_details()
         elif roll_input == 'inv':
             print(f'Inventory: {INV}')
         else:
