@@ -14,3 +14,5 @@ public_attrs = {
         'Legendary': ['Damage with Skills', 'Damage vs Elites', 'Life on Kill', 'Critical Strike Chance', 'All Stats'],
         'Unique': ['Movement Speed', 'Weapon Damage', 'Weapon Speed', 'Vulnerable Damage', 'Resist All', 'Attack Speed', 'Lucky Hit Chance', 'Resist All']
         }
+
+item_details = {'Basic Wand': {'Intelligence': 15, 'Overpower Chance': .34, 'Poison Resistance': .12, 'Resist All': 8}}
