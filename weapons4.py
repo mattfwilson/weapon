@@ -17,13 +17,14 @@ class Item:
     id_iter = itertools.count(1)
     def __init__(self):
         self.id = next(Item.id_iter)
-        self.type_equipment = True
+        self.type_equipment = False
         self.type_consumable = False
         self.account_bound = False
 
 class Weapon(Item):
     def __init__(self, adj: dict, weapon: list):
         super().__init__()
+        self.type_equipment = True
         self._rarity = ''.join(random.choices(RARITY, weights=[10, 7, 4, 8, 8]))
         self._level = 5
         self._weap_adj = ''.join(random.choices(adj.get(self._rarity)))
@@ -78,7 +79,7 @@ class Weapon(Item):
         print(f'Equipment: {self.type_equipment}\nConsumable: {self.type_consumable}\nQuest item: {self.account_bound}\nBuff slots: {self._buff_slots}')
 
     def __repr__(self):
-        return self._adj, self._weap_type
+        return f'[ID: {self.id} - {self._rarity} {self._weap_adj} {self._weap_type}]'
 
 if __name__ == "__main__":
     while True:
@@ -89,6 +90,7 @@ if __name__ == "__main__":
             item.roll_attrs(sor_attrs, public_attrs)
             item.add_to_inv()
             item.show_drop()
+            print(f'{item}')
         elif roll_input == 'inv':
             print(f'Inventory: {INV}')
         else:
