@@ -1,11 +1,11 @@
 sor_adj = {
         'Common': ['Basic', 'Apprentice', 'Feeble', 'Sturdy', 'Oak', 'Hewn'],
-        'Magic': ['Enchanted', 'Enlightened', 'Fanatic\'s'],
-        'Rare': ['Cleric\'s', 'Undying', 'Apostle\'s'],
-        'Legendary': ['Empowered', 'Tribal', 'Elementalist\'s'],
-        'Unique': ['Sacred', 'Intellect\'s', 'Cultist\'s']
+        'Magic': ['Enchanted', 'Enlightened', 'Fanatic\'s', 'Aged', 'Assistant\'s'],
+        'Rare': ['Cleric\'s', 'Undying', 'Apostle\'s', 'Choker\'s', 'Elder\'s', 'Brutal'],
+        'Legendary': ['Empowered', 'Tribal', 'Elemental', 'Blasphemy', 'Tortured'],
+        'Unique': ['Sacred', 'Intellect\'s', 'Cultist\'s', 'Jambiya\'s', 'Serpentine']
         }
-sor_weap = ['Wand', 'Staff', 'Dagger', 'Focus']
+sor_weap = ['Wand', 'Staff', 'Dagger', 'Edge']
 sor_attrs = ['Intelligence', 'Willpower', 'Dexterity', 'Vitality', 'Strength']
 public_attrs = {
         'Common': ['Poison Resistance', 'Cold Resistance', 'Fire Resistance', 'Lightning Resistance', 'Shadow Resistance', 'Undead Resistance'],
