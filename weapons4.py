@@ -54,13 +54,13 @@ class Weapon(Item):
     def roll_attrs(self, sor_attrs, public_attrs):
         base_buff = ''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1]))
         self._buffs.append(base_buff)
-        for slots in range(self._buff_slots):
+
+        for slots in range(self._buff_slots - 1):
             pub_buff = ''.join(random.choice(public_attrs.get(''.join(random.choices(RARITY, weights=[10, 7, 5, 3, 2])))))
-            print(pub_buff)
-            if pub_buff not in self._buffs:
-                self._buffs.append(pub_buff)
-            else:
+            while pub_buff in self._buffs:
                 pub_buff = ''.join(random.choice(public_attrs.get(''.join(random.choices(RARITY, weights=[10, 7, 5, 3, 2])))))
+            self._buffs.append(pub_buff)
+
         assert self._buff_slots == len(self._buffs), f'{self._rarity} item, ({len(self._buffs)}) buffs, ({self._buff_slots}) slots'
         return self._buffs
 
