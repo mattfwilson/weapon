@@ -2,8 +2,7 @@
 
 # Conditional for check on whether attr is int or float (percent)
 # Unit test for ensuring each item rolled has proper attrs and structure for appending to INV_DETAILS
-# Bug: buff slots not rolling for maximum amount of buff slots created
-# Make assert for checking if buff slots match buffs created /
+# Make dict of different lists for rarity of an attr roll, e.g. a legendary roll of attributes is weighted more towards legendary affix lists, where a magic roll is weighted more towards common/magic affix lists
 
 import itertools
 import random
@@ -27,7 +26,7 @@ class Weapon(Item):
     def __init__(self, adj: dict, weapon: list):
         super().__init__()
         self.type_equip = True
-        self._rarity = ''.join(random.choices(RARITY, weights=[10, 7, 4, 8, 8]))
+        self._rarity = ''.join(random.choices(RARITY, weights=[1, 1, 1, 1, 1]))
         self._level = 5
         self._weap_adj = ''.join(random.choices(adj.get(self._rarity)))
         self._weap_type = ''.join(random.choices(weapon))
@@ -39,10 +38,10 @@ class Weapon(Item):
         assert isinstance(self._rarity, str), 'self._rarity is not a string'
         match self._rarity:
             case 'Unique':
-                self._buff_slots = 6
+                self._buff_slots = random.randint(5, 7)
                 self.type_bound = True
             case 'Legendary':
-                self._buff_slots = 5
+                self._buff_slots = random.randint(4, 5)
                 self.type_bound = True
             case 'Rare':
                 self._buff_slots = 3
@@ -73,7 +72,7 @@ class Weapon(Item):
             print(f'- {att}')
 
     def show_details(self):
-        print(f'\nEquipment: {self.type_equip}\nConsumable: {self.type_consume}\nAccount Bound: {self.type_bound}\nBuff slots: {self._buff_slots}\n')
+        print(f'\n- Equipment: {self.type_equip}\n- Consumable: {self.type_consume}\n- Account Bound: {self.type_bound}\n- Buff slots: {self._buff_slots}\n')
 
     def __repr__(self):
         return f'[ID: {self.id} - {self._rarity} {self._weap_adj} {self._weap_type}]'
