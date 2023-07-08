@@ -32,7 +32,7 @@ class Weapon(Item):
         self._weap_type = ''.join(random.choices(weapon))
         self._drop = self._weap_adj + ' ' + self._weap_type
         self._buff_slots = 0
-        self._buffs = []
+        self._buffs = {}
 
     def roll_slots(self):
         assert isinstance(self._rarity, str), 'self._rarity is not a string'
@@ -52,13 +52,16 @@ class Weapon(Item):
 
     def roll_attrs(self, sor_attrs, public_attrs):
         base_buff = ''.join(random.choices(sor_attrs, weights=[10, 7, 3, 2, 1]))
-        self._buffs.append(base_buff)
+        base_roll = random.randint(6, 12)
+        self._buffs[base_buff] = base_roll 
 
         for slots in range(self._buff_slots - 1):
             pub_buff = ''.join(random.choice(public_attrs.get(''.join(random.choices(RARITY, weights=[10, 7, 5, 3, 2])))))
             while pub_buff in self._buffs:
                 pub_buff = ''.join(random.choice(public_attrs.get(''.join(random.choices(RARITY, weights=[10, 7, 5, 3, 2])))))
-            self._buffs.append(pub_buff)
+
+            perc_roll = round(random.uniform(perc_attr.get(self._rarity)[0], perc_attr.get(self._rarity)[1]), 1)
+            self._buffs[pub_buff] = perc_roll
 
         assert self._buff_slots == len(self._buffs), f'{self._rarity} item, ({len(self._buffs)}) buffs, ({self._buff_slots}) slots'
         return self._buffs
@@ -68,8 +71,11 @@ class Weapon(Item):
 
     def show_drop(self):
         print(f'\n---------- [{self._rarity}] {self._drop} ----------')
-        for att in self._buffs:
-            print(f'- {att}')
+        for attr in self._buffs:
+            if isinstance(self._buffs[attr], int):
+                print(f'- {attr}: +{self._buffs[attr]}')
+            else:
+                print(f'- {attr}: +{self._buffs[attr]}%')
 
     def show_details(self):
         print(f'\n- Equipment: {self.type_equip}\n- Consumable: {self.type_consume}\n- Account Bound: {self.type_bound}\n- Buff slots: {self._buff_slots}\n')
