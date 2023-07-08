@@ -16,3 +16,11 @@ public_attrs = {
         }
 
 item_details = {'Basic Wand': {'Intelligence': 15, 'Overpower Chance': .34, 'Poison Resistance': .12, 'Resist All': 8}}
+
+perc_attr = {
+        'Common': [4.0, 8.0],
+        'Magic': [6.0, 10.0],
+        'Rare': [8.5, 16.0],
+        'Legendary': [10.0, 18.0],
+        'Unique': [14.0, 20.0]
+        }
