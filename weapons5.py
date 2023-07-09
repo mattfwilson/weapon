@@ -10,7 +10,7 @@ from attr_info import *
 
 CHAR_CLASS = str()
 CHAR_LEVEL = 1
-INV = []
+INV = {}
 INV_DETAILS = {}
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
 
@@ -26,7 +26,7 @@ class Weapon(Item):
     def __init__(self, adj: dict, weapon: list):
         super().__init__()
         self.type_equip = True
-        self._rarity = ''.join(random.choices(RARITY, weights=[1, 1, 1, 1, 1]))
+        self._rarity = ''.join(random.choices(RARITY, weights=[5, 4, 3, 2, 1]))
         self._level = 5
         self._weap_adj = ''.join(random.choices(adj.get(self._rarity)))
         self._weap_type = ''.join(random.choices(weapon))
@@ -67,7 +67,7 @@ class Weapon(Item):
         return self._buffs
 
     def add_to_inv(self):
-        INV.append(self._drop)
+        INV[self._drop] = self._buffs
 
     def show_drop(self):
         print(f'\n---------- [{self._rarity}] {self._drop} ----------')
