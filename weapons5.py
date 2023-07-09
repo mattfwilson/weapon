@@ -3,6 +3,8 @@
 # Conditional for check on whether attr is int or float (percent)
 # Unit test for ensuring each item rolled has proper attrs and structure for appending to INV_DETAILS
 # Make dict of different lists for rarity of an attr roll, e.g. a legendary roll of attributes is weighted more towards legendary affix lists, where a magic roll is weighted more towards common/magic affix lists
+# Store item id in the inventory dictionary in case there are duplicate item names
+# Display inventory in a presentable way
 
 import itertools
 import random
@@ -78,7 +80,7 @@ class Weapon(Item):
                 print(f'- {attr}: +{self._buffs[attr]}%')
 
     def show_details(self):
-        print(f'\n- Equipment: {self.type_equip}\n- Consumable: {self.type_consume}\n- Account Bound: {self.type_bound}\n- Buff slots: {self._buff_slots}\n')
+        print(f'\n- ID: {self.id}\n- Equipment: {self.type_equip}\n- Consumable: {self.type_consume}\n- Account Bound: {self.type_bound}\n- Buff slots: {self._buff_slots}\n')
 
     def __repr__(self):
         return f'[ID: {self.id} - {self._rarity} {self._weap_adj} {self._weap_type}]'
