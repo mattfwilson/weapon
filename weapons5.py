@@ -16,6 +16,16 @@ INV = {}
 INV_DETAILS = {}
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
 
+
+test_dict = {'outer_key': {'inner_key': 123}}
+test_dict2 = {'outer_key': {'inner_key': 1.23}}
+
+print(test_dict.get('outer_key').get('inner_key'))
+if isinstance(test_dict2.get('outer_key').get('inner_key'), int):
+    print('INT')
+else:
+    print('NOT INT')
+
 class Item:
     id_iter = itertools.count(1)
     def __init__(self):
