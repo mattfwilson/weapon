@@ -5,6 +5,7 @@
 # Make dict of different lists for rarity of an attr roll, e.g. a legendary roll of attributes is weighted more towards legendary affix lists, where a magic roll is weighted more towards common/magic affix lists
 # Store item id in the inventory dictionary in case there are duplicate item names
 # Display inventory in a presentable way
+# Is there a way to make drop adj/types a dict and have the value be an int that is counted without duplicates so that they values can be dynamically called for weights?
 
 import itertools
 import random
@@ -17,14 +18,14 @@ INV_DETAILS = {}
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
 
 
-test_dict = {'outer_key': {'inner_key': 123}}
+test_dict = {'outer_key': {'inner_key': False}}
 test_dict2 = {'outer_key': {'inner_key': 1.23}}
 
 print(test_dict.get('outer_key').get('inner_key'))
-if isinstance(test_dict2.get('outer_key').get('inner_key'), int):
-    print('INT')
+if isinstance(test_dict.get('outer_key').get('inner_key'), bool):
+    print('Is Boolean')
 else:
-    print('NOT INT')
+    print('Not Boolean')
 
 class Item:
     id_iter = itertools.count(1)
