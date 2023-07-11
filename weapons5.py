@@ -17,15 +17,17 @@ INV = {}
 INV_DETAILS = {}
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
 
+rand_dict_item = random.choice(list(public_attrs.items()))
+print(rand_dict_item)
 
-test_dict = {'outer_key': {'inner_key': False}}
-test_dict2 = {'outer_key': {'inner_key': 1.23}}
-
-print(test_dict.get('outer_key').get('inner_key'))
-if isinstance(test_dict.get('outer_key').get('inner_key'), bool):
-    print('Is Boolean')
-else:
-    print('Not Boolean')
+#test_dict = {'outer_key': {'inner_key': False}}
+#test_dict2 = {'outer_key': {'inner_key': 1.23}}
+#
+#print(test_dict.get('outer_key').get('inner_key'))
+#if isinstance(test_dict.get('outer_key').get('inner_key'), bool):
+#    print('Is Boolean')
+#else:
+#    print('Not Boolean')
 
 class Item:
     id_iter = itertools.count(1)
