@@ -63,7 +63,7 @@ public_attrs = {
         'Vulnerable Damage': True,
         'Resist All': True,
         'Attack Speed': True,
-        'Lucky Hit Chance': True,
+        'Lucky Hit Chance': True
         }
     }
 
