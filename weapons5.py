@@ -17,12 +17,10 @@ INV = {}
 INV_DETAILS = {}
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
 
-rand_key = random.choice(list(public_attrs.keys()))
-print(f'{rand_key}, type: {type(rand_key)}')
-rand_dict = public_attrs[rand_key]
-print(f'{rand_dict}, type: {type(rand_dict)}')
-rand_item = random.choice(list(rand_dict))
-print(f'{rand_item}, type: {type(rand_item)}')
+#rand_dict = public_attrs[random.choice(list(public_attrs.keys()))]
+#print(f'{rand_dict}, type: {type(rand_dict)}')
+#rand_item = random.choice(list(rand_dict))
+#print(f'{rand_item}, type: {type(rand_item)}')
 
 class Item:
     id_iter = itertools.count(1)
