@@ -1,8 +1,6 @@
 # To-Dos
 
-# Conditional for check on whether attr is int or float (percent)
 # Unit test for ensuring each item rolled has proper attrs and structure for appending to INV_DETAILS
-# Make dict of different lists for rarity of an attr roll, e.g. a legendary roll of attributes is weighted more towards legendary affix lists, where a magic roll is weighted more towards common/magic affix lists
 # Store item id in the inventory dictionary in case there are duplicate item names
 # Display inventory in a presentable way
 # Is there a way to make drop adj/types a dict and have the value be an int that is counted without duplicates so that they values can be dynamically called for weights?
@@ -17,10 +15,10 @@ INV = {}
 INV_DETAILS = {}
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
 
-#rand_dict = public_attrs[random.choice(list(public_attrs.keys()))]
-#print(f'{rand_dict}, type: {type(rand_dict)}')
-#rand_item = random.choice(list(rand_dict))
-#print(f'{rand_item}, type: {type(rand_item)}')
+rand_dict = public_attrs[random.choice(list(public_attrs.keys()))]
+print(f'{rand_dict}, type: {type(rand_dict)}')
+rand_item = random.choice(list(rand_dict))
+print(f'{rand_item}, type: {type(rand_item)}')
 
 class Item:
     id_iter = itertools.count(1)
@@ -72,6 +70,7 @@ class Weapon(Item):
             self._buffs[pub_buff] = perc_roll
 
         assert self._buff_slots == len(self._buffs), f'{self._rarity} item, ({len(self._buffs)}) buffs, ({self._buff_slots}) slots'
+        self._buffs['ID'] = self.id
         return self._buffs
 
     def add_to_inv(self):
