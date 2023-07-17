@@ -1,7 +1,6 @@
 # To-Dos
 
 # Unit test for ensuring each item rolled has proper attrs and structure for appending to INV_DETAILS
-# Store item id in the inventory dictionary in case there are duplicate item names
 # Display inventory in a presentable way
 # Is there a way to make drop adj/types a dict and have the value be an int that is counted without duplicates so that they values can be dynamically called for weights?
 
@@ -90,6 +89,12 @@ class Weapon(Item):
     def __repr__(self):
         return f'[ID: {self.id} - {self._rarity} {self._weap_adj} {self._weap_type}]'
 
+def show_inv(inventory):
+    print(f'---------- INVENTORY ----------')
+    for item in inventory:
+        print(item)
+    print(f'\n')
+
 if __name__ == "__main__":
     while True:
         roll_input = input('What do you want to do? ')
@@ -101,7 +106,7 @@ if __name__ == "__main__":
             item.show_drop()
             item.show_details()
         elif roll_input == 'inv':
-            print(f'Inventory: {INV}')
+            show_inv(INV)
         else:
             print(f'Exiting...')
             break
