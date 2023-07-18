@@ -76,7 +76,7 @@ class Weapon(Item):
         INV[self._drop] = self._buffs
 
     def show_drop(self):
-        print(f'\n---------- [{self._rarity}] {self._drop} ----------')
+        print('-' * 10 + ' [' + self._rarity + '] ' + self._drop + ' ' + '-' * 10)
         for attr in self._buffs:
             if isinstance(self._buffs[attr], int):
                 print(f'- {attr}: +{self._buffs[attr]}')
@@ -90,9 +90,9 @@ class Weapon(Item):
         return f'[ID: {self.id} - {self._rarity} {self._weap_adj} {self._weap_type}]'
 
 def show_inv(inventory):
-    print(f'---------- INVENTORY ----------')
+    print('-' * 10 + ' INVENTORY ' + '-' * 10)
     for item in inventory:
-        print(item)
+        print(f'{list(inventory).index(item)} - {item}')
     print(f'\n')
 
 if __name__ == "__main__":
