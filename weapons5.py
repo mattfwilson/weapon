@@ -1,7 +1,6 @@
 # To-Dos
 
 # Unit test for ensuring each item rolled has proper attrs and structure for appending to INV_DETAILS
-# Display inventory in a presentable way
 # Is there a way to make drop adj/types a dict and have the value be an int that is counted without duplicates so that they values can be dynamically called for weights?
 
 import itertools
@@ -13,11 +12,6 @@ CHAR_LEVEL = 1
 INV = {}
 INV_DETAILS = {}
 RARITY = ['Common', 'Magic', 'Rare', 'Legendary', 'Unique']
-
-rand_dict = public_attrs[random.choice(list(public_attrs.keys()))]
-print(f'{rand_dict}, type: {type(rand_dict)}')
-rand_item = random.choice(list(rand_dict))
-print(f'{rand_item}, type: {type(rand_item)}')
 
 class Item:
     id_iter = itertools.count(1)
@@ -92,7 +86,7 @@ class Weapon(Item):
 def show_inv(inventory):
     print('-' * 10 + ' INVENTORY ' + '-' * 10)
     for item in inventory:
-        print(f'{list(inventory).index(item)} - {item}')
+        print(f'{list(inventory).index(item)} {item}')
     print(f'\n')
 
 if __name__ == "__main__":
