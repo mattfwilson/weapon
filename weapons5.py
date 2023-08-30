@@ -7,6 +7,7 @@ import itertools
 import random
 from attr_info import *
 
+RUNNING = True
 CHAR_CLASS = str()
 CHAR_LEVEL = 1
 INV = {}
@@ -90,7 +91,7 @@ def show_inv(inventory):
     print(f'\n')
 
 if __name__ == "__main__":
-    while True:
+    while RUNNING:
         roll_input = input('What do you want to do? ')
         if roll_input == 'roll':
             item = Weapon(sor_adj, sor_weap)
@@ -103,5 +104,6 @@ if __name__ == "__main__":
             show_inv(INV)
         else:
             print(f'Exiting...')
+            RUNNING = False
             break
 
